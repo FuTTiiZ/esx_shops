@@ -6,6 +6,14 @@ local CurrentActionMsg        = ''
 local CurrentActionData       = {}
 local PlayerData              = {}
 
+RegisterNUICallback('close', function(data, cb)
+  SendNUIMessage({
+    type = 'esx_shop',
+    display = false
+  })
+    SetNuiFocus(false, false)
+end)
+
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -34,8 +42,6 @@ function OpenShopMenu(zone)
 		end
 
 		table.insert(elements, {
-			label      = item.label .. ' - <span style="color: green;">DKK ' .. item.price .. '</span>',
-			label_real = item.label,
 			item       = item.item,
 			price      = item.price,
 
@@ -46,8 +52,13 @@ function OpenShopMenu(zone)
 			max        = item.limit
 		})
 	end
+	SendNUIMessage({
+		type = 'esx_shop',
+		display = true,
+		items = elements})
+		SetNuiFocus(true, true)
 
-	ESX.UI.Menu.CloseAll()
+	--[[ESX.UI.Menu.CloseAll()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop', {
 		title    = _U('shop'),
 		align    = 'bottom-right',
@@ -74,7 +85,7 @@ function OpenShopMenu(zone)
 		CurrentAction     = 'shop_menu'
 		CurrentActionMsg  = _U('press_menu')
 		CurrentActionData = {zone = zone}
-	end)
+	end)]]
 end
 
 AddEventHandler('esx_shops:hasEnteredMarker', function(zone)
