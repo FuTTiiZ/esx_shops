@@ -55,7 +55,9 @@ function OpenShopMenu(zone)
 	SendNUIMessage({
 		type = 'esx_shop',
 		display = true,
-		items = elements})
+		items = elements,
+    zone = zone
+  })
 		SetNuiFocus(true, true)
 
 	--[[ESX.UI.Menu.CloseAll()
@@ -87,6 +89,12 @@ function OpenShopMenu(zone)
 		CurrentActionData = {zone = zone}
 	end)]]
 end
+
+AddEventHandler('esx_shops:hasEnteredMarker', function(zone)
+	CurrentAction     = 'shop_menu'
+	CurrentActionMsg  = _U('press_menu')
+	CurrentActionData = {zone = zone}
+end)
 
 AddEventHandler('esx_shops:hasEnteredMarker', function(zone)
 	CurrentAction     = 'shop_menu'
@@ -185,4 +193,10 @@ Citizen.CreateThread(function()
 			Citizen.Wait(500)
 		end
 	end
+end)
+
+Citizen.CreateThread(function()
+  RegisterNUICallback('buy', function(data, cb)
+    TriggerServerEvent('esx_shops:buyItem', data.item, data.amount, data.zone)
+  end)
 end)

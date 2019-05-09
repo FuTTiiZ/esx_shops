@@ -5,7 +5,7 @@
   font-family: Helvetica;
   background-color: #D3D3D3;
   width: 650px;
-  height: 575px;
+  height: 395px;
   top: 50%;
   left: 50%;
   margin-left: -325px;
@@ -15,7 +15,7 @@
 
 .main-container {
   width: 620px;
-  height: 488px;
+  height: 308px;
   margin-left: 15px;
   margin-top: -12px;
   border-radius: 5px;
@@ -28,7 +28,7 @@
   border-bottom-left-radius: 5px;
   position: absolute;
   width: 620px;
-  height: 450px;
+  height: 270px;
   box-shadow: inset 0 0 5px #000000;
   pointer-events : none;
 }
@@ -148,10 +148,76 @@ li.shop-item div p {
   margin-left: 12px;
 }
 
-.gm-info {
+.info {
   margin-top: 5px;
   margin-left: 12px;
   color: black;
+}
+
+.info p {
+  font-style: italic;
+}
+
+.info b {
+  font-style: normal;
+}
+
+.slidecontainer {
+  width: 300px;
+  margin-left: 160px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  filter: brightness(110%);
+}
+
+.slider:hover {
+  filter: brightness(95%);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #21568b;
+  cursor: pointer;
+}
+
+#buy {
+  margin-left: 160px;
+  width: 300px;
+  height: 25px;
+  background-color: green;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#buy:hover {
+  filter: brightness(110%);
+}
+
+#buy p {
+  padding-top: 5px;
+  color: white;
+}
+
+h2 {
+  font-weight: normal;
+  margin-bottom: 5px;
 }
 
 .multiplier {
